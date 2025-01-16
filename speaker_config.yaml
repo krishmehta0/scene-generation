@@ -1,0 +1,59 @@
+object_name: "KRK_Rokit_5_Studio_Monitor"
+version: 1.0
+physical_properties:
+  dimensions:
+    height: 0.280  # meters
+    width: 0.190   # meters
+    depth: 0.230   # meters
+  mass: 4.8        # kg
+  center_of_mass:
+    x: 0.095       # meters (assumed center of width)
+    y: 0.140       # meters (slightly below geometric center due to weight of magnets)
+    z: 0.115       # meters (assumed center of depth)
+  
+  inertia_tensor:  # kg*m^2, approximated for rectangular prism
+    ixx: 0.0641    # (mass/12) * (height^2 + depth^2)
+    iyy: 0.0724    # (mass/12) * (width^2 + depth^2)
+    izz: 0.0468    # (mass/12) * (height^2 + width^2)
+    ixy: 0.0
+    ixz: 0.0
+    iyz: 0.0
+
+material_properties:
+  main_body:
+    material: "MDF"
+    density: 750.0  # kg/m^3
+    young_modulus: 4.0e9  # Pa
+    poisson_ratio: 0.25
+  
+  surface_properties:
+    primary_material: "vinyl_wrap"
+    friction:
+      static: 0.8
+      dynamic: 0.6
+    restitution: 0.3
+    roughness: 0.2
+    
+  feet:
+    material: "rubber"
+    friction:
+      static: 0.9
+      dynamic: 0.7
+    restitution: 0.4
+
+collision_properties:
+  collision_shape: "box"
+  margin: 0.001  # meters
+  compound_shape:
+    - type: "box"
+      dimensions: [0.190, 0.280, 0.230]  # width, height, depth
+      position: [0, 0, 0]
+      rotation: [0, 0, 0]
+
+simulation_properties:
+  max_velocity: 10.0  # m/s
+  max_angular_velocity: 6.28  # rad/s
+  sleep_threshold_linear: 0.1  # m/s
+  sleep_threshold_angular: 0.1  # rad/s
+  ccd_motion_threshold: 0.002  # meters
+  ccd_swept_sphere_radius: 0.001  # meters

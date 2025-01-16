@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# ROS
+.catkin_workspace
+build/
+devel/
+logs/
+install/
+
+# 3D Objects and Large Binary Files
+*.glb
+*.obj
+*.mtl
+*.fbx
+*.dae
+*.blend
+*.blend1
+
+franka_panda/
+franka_ros/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System
+.DS_Store
+Thumbs.db
+gitignore/
